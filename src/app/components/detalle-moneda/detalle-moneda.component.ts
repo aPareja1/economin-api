@@ -10,7 +10,6 @@ import { Chart } from 'chart.js';
 })
 export class DetalleMonedaComponent implements OnInit {
 
-  data: any[];
   Linechart;
   meses = [] ;
   valor=[];
