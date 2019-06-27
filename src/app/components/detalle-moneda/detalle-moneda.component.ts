@@ -9,15 +9,13 @@ import { Chart } from 'chart.js';
   styleUrls: ['./detalle-moneda.component.css']
 })
 export class DetalleMonedaComponent implements OnInit {
-  
-  data: any[];  
-  Player = [];  
-  Run = [];  
-  Linechart;  
+
+  data: any[];
+  Linechart;
   meses = [] ;
   valor=[];
   serie:any={};
-  
+
   constructor(private ds :DataService, private ms: MonedasService) { }
   moneda : any;
   ngOnInit() {
@@ -34,28 +32,28 @@ export class DetalleMonedaComponent implements OnInit {
             this.serie.forEach(element => {
               this.meses.push(element.fecha);
               this.valor.push(element.valor);
-              
+
             });
-            if (this.Linechart) this.Linechart.destroy();      
-            this.Linechart = new Chart('canvas', {  
-              type: 'line',  
-              data: {  
-                labels: this.meses,  
-        
-                datasets: [  
-                  {  
-                    data: this.valor,  
-                    borderColor: '#3cb371',  
-                    backgroundColor: "#0000FF",  
-                  }  
-                ]  
-              },  
-              options: {  
-                legend: {  
-                  display: false  
-                },  
-                scales: {  
-                  xAxes: [{  
+            if (this.Linechart) this.Linechart.destroy();
+            this.Linechart = new Chart('canvas', {
+              type: 'line',
+              data: {
+                labels: this.meses,
+
+                datasets: [
+                  {
+                    data: this.valor,
+                    borderColor: '#3cb371',
+                    backgroundColor: "#0000FF",
+                  }
+                ]
+              },
+              options: {
+                legend: {
+                  display: false
+                },
+                scales: {
+                  xAxes: [{
                     display: true,
                     type:'time',
                     time:{
@@ -63,22 +61,22 @@ export class DetalleMonedaComponent implements OnInit {
                         day: 'MMM D'
                       }
                     }
-                  }],  
-                  yAxes: [{  
-                    display: true  
-                  }],  
-                }  
-              }  
-            });  
-           
+                  }],
+                  yAxes: [{
+                    display: true
+                  }],
+                }
+              }
+            });
+
           }
         );
-      
+
       };
-        
+
     });
 
 
-     
+
   }
 }
